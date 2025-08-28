@@ -1,0 +1,42 @@
+{% extends "signupApp/base.html" %}
+
+{% block title %}
+  CIT 390 COURSE REGISTRATION PAGE
+{% endblock %}
+
+{% block content %}
+
+{% load static %}  <!-- Django template tag -->
+<!--Link the CSS file to this page-->
+<link rel="stylesheet" href="{% static 'signupApp/css/AUlogo.css' %}">
+
+<!--Display the Image where you want it on the page; say at the top-->
+<img src="{% static 'signupApp/images/AUlogo.png' %}" alt="Logo" class="logo">
+
+  <h1>CIT 390 COURSE REGISTRATION PAGE</h1>
+  <h2>Enter your information below:</h2>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <button name="save">Submit</button>
+  </form>
+
+  <h2>Completed registrations:</h2>
+  {% for reg in regis %}
+    <div style="margin-bottom: 20px;">
+      <p><strong>Name:</strong> {{ reg.firstName }} {{ reg.lastName }}</p>
+      <p>
+        <strong>Student ID:</strong> {{ reg.studentID }} |
+        <strong>Course Code:</strong> {{ reg.courseCode }} |
+        <strong>Term:</strong> {{ reg.term }} |
+        <strong>Date:</strong> {{ reg.date }}
+      </p>
+      <p>**************************************************</p>
+    </div>
+  {% empty %}
+    <p>No registrations yet.</p>
+  {% endfor %}
+{% endblock %}
+
