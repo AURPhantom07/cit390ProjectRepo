@@ -1,3 +1,5 @@
 .env
 cit390venv
 .env-kvault
+.env-githubsecrets
+github-setsecrets.py
