@@ -50,5 +50,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: signapp
+        resource-group: cit390project1
         slot-name: production
         package: .
